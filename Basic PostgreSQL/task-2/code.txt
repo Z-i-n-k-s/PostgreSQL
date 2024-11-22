@@ -1,0 +1,4 @@
+select rental_date
+from rental
+order by rental_date desc
+limit 10
