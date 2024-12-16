@@ -1,0 +1,46 @@
+select 
+min(replacement_cost),
+max(replacement_cost),
+sum(replacement_cost),
+round(avg(replacement_cost),2) as avg_of_Replacement_cost
+from film;
+
+
+
+select
+staff_id,
+sum(amount),
+count(*)
+from payment
+where amount>0
+group by staff_id
+order by sum(amount) desc;
+
+
+
+
+
+select
+date(payment_date),
+sum (amount),
+staff_id,
+count(*)
+from payment
+where amount > 0
+group by date(payment_date),staff_id
+order by count(*) desc;
+
+
+
+
+
+select 
+date(payment_date),
+customer_id,
+round(avg(amount),2) as AVG_of_Amount,
+count(*)
+from payment
+where payment_date between '2020-04-28' and '2020-04-30'
+group by customer_id,date(payment_date)
+having count(*)>1
+order by AVG_of_Amount desc
